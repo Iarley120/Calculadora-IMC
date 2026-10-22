@@ -1,0 +1,346 @@
+:root {
+  --card: rgba(10, 22, 36, 0.88);
+  --texto: #f2f4f5;
+  --suave: #a9b3b8;
+  --borda: #2c4258;
+  --destaque: #1976d2;
+  --destaque-claro: #4db3ff;
+  --destaque-hover: #1258a8;
+  --azul: #bfe0f7;
+  --verde: #bff0cf;
+  --amarelo: #fbe9a6;
+  --vermelho: #f6bdb7;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    Roboto,
+    Arial,
+    sans-serif;
+  color: var(--texto);
+  line-height: 1.5;
+  /* Foto de fundo: fundo.png (na mesma pasta). Sem a foto, usa o degradê. */
+  background:
+    linear-gradient(rgba(5, 15, 28, 0.25), rgba(5, 15, 28, 0.25)),
+    url("./Fundo.png") center / cover no-repeat fixed,
+    linear-gradient(135deg, #0f2a44, #07121f);
+}
+
+main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  padding: 24px 16px;
+}
+
+/* Foto do doutor na frente, ao lado da calculadora */
+.doutor {
+  flex: 0 1 400px;
+  max-width: 400px;
+  margin: 0;
+}
+.doutor img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid var(--borda);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.calculadora {
+  width: 100%;
+  max-width: 430px;
+  background: var(--card);
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  padding: 30px 26px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.topo {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+h1 {
+  margin: 4px 0 2px;
+  font-weight: 800;
+  font-size: 1.7rem;
+}
+h1 span {
+  color: var(--destaque-claro);
+}
+
+.frase {
+  margin: 0 0 22px;
+  text-align: center;
+  color: var(--suave);
+  font-size: 0.92rem;
+  font-style: italic;
+  min-height: 1.4em;
+}
+
+.linha {
+  display: flex;
+  gap: 12px;
+}
+.campo {
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--texto);
+  background: #112638;
+  border: 1.5px solid var(--borda);
+  border-radius: 8px;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+input::placeholder {
+  color: #7d93a6;
+}
+input:focus {
+  outline: none;
+  border-color: var(--destaque-claro);
+  box-shadow: 0 0 0 3px rgba(77, 179, 255, 0.3);
+}
+
+.botoes {
+  display: flex;
+  gap: 10px;
+}
+button {
+  padding: 13px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    transform 0.1s,
+    color 0.2s;
+}
+button:active {
+  transform: scale(0.97);
+}
+button:focus-visible {
+  outline: 3px solid rgba(77, 179, 255, 0.6);
+  outline-offset: 2px;
+}
+
+#btnCalcular {
+  flex: 2;
+  color: #fff;
+  background: var(--destaque);
+  border: none;
+}
+#btnCalcular:hover {
+  background: var(--destaque-hover);
+}
+#btnLimpar {
+  flex: 1;
+  color: var(--suave);
+  background: transparent;
+  border: 1.5px solid var(--borda);
+}
+#btnLimpar:hover {
+  color: var(--texto);
+  border-color: var(--suave);
+}
+
+/* Área do resultado */
+#resultado {
+  margin-top: 22px;
+  border-radius: 12px;
+  text-align: center;
+  color: #1b2328;
+}
+#resultado:not(:empty) {
+  padding: 18px 16px;
+  animation: surgir 0.4s ease-out;
+}
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.emoji {
+  font-size: 2.4rem;
+  display: block;
+  line-height: 1.2;
+}
+.valor {
+  font-size: 2rem;
+  font-weight: 800;
+  display: block;
+}
+.classe {
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: block;
+}
+.dica {
+  margin: 10px 0 0;
+  font-size: 0.92rem;
+}
+.ideal {
+  margin: 8px 0 0;
+  font-size: 0.88rem;
+  opacity: 0.85;
+}
+
+.abaixo {
+  background: var(--azul);
+}
+.normal {
+  background: var(--verde);
+}
+.sobrepeso {
+  background: var(--amarelo);
+}
+.obesidade {
+  background: var(--vermelho);
+}
+.erro {
+  background: var(--vermelho);
+  font-weight: 600;
+}
+
+/* Escala visual com marcador */
+.escala {
+  position: relative;
+  height: 12px;
+  margin: 16px 6px 4px;
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    #5aa9e6 0 14%,
+    #4cc38a 14% 40%,
+    #f2c94c 40% 60%,
+    #e5584b 60% 100%
+  );
+}
+.marcador {
+  position: absolute;
+  top: -5px;
+  width: 4px;
+  height: 22px;
+  margin-left: -2px;
+  background: #1b2328;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  transition: left 0.6s ease-out;
+}
+.legenda {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 6px;
+  font-size: 0.72rem;
+  opacity: 0.75;
+}
+
+/* Histórico */
+.historico {
+  margin-top: 20px;
+}
+.historico h2 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  color: var(--suave);
+}
+.historico ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.historico li {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 10px;
+  margin-bottom: 5px;
+  font-size: 0.88rem;
+  background: #112638;
+  border-left: 4px solid var(--borda);
+  border-radius: 6px;
+}
+.historico li.abaixo {
+  border-left-color: #5aa9e6;
+  background: #112638;
+}
+.historico li.normal {
+  border-left-color: #4cc38a;
+  background: #112638;
+}
+.historico li.sobrepeso {
+  border-left-color: #f2c94c;
+  background: #112638;
+}
+.historico li.obesidade {
+  border-left-color: #e5584b;
+  background: #112638;
+}
+.vazio {
+  color: #7d93a6;
+  font-size: 0.85rem;
+}
+
+footer {
+  padding: 16px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #fff;
+  background: rgba(5, 15, 28, 0.75);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (max-width: 380px) {
+  .linha {
+    flex-direction: column;
+    gap: 0;
+  }
+}
